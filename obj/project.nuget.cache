@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "BOHpP0H/XH3uhMA8HqsPqkLnylgsS28XG1x6Um8FInOpdmnkB5kLl8fKmiuGVAutMACb8lhj44J4HWTkafm1vQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\miks78151\\OneDrive - Willis Towers Watson\\Documents\\Angular Project\\workout-application-services\\workout-application-services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\miks78151\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\miks78151\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
