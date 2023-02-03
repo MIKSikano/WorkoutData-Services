@@ -15,7 +15,7 @@ namespace WorkoutApplicationServices.Commands
             Errors.Add("startTimeResult", new List<string>());
             Errors.Add("endTimeResult", new List<string>());
             Errors.Add("caloriesBurnedResult", new List<string>());
-            Errors.Add("caloriesGoalResult", new List<string>());
+            Errors.Add("caloriesBurnedGoalResult", new List<string>());
         }
 
         public bool MayError()
@@ -52,7 +52,7 @@ namespace WorkoutApplicationServices.Commands
                 sagot = true;
             }
 
-            if (Errors["caloriesGoalResult"].Count > 0)
+            if (Errors["caloriesBurnedGoalResult"].Count > 0)
             {
                 sagot = true;
             }
@@ -84,12 +84,17 @@ namespace WorkoutApplicationServices.Commands
             {
                 Errors["startTimeResult"].Add("Enter Your Exercise Start Time!");
             }
+    
 
             if (!payload.ContainsKey("endTimeResult"))
             {
                 Errors["endTimeResult"].Add("Enter Your Exercise End Time");
             }
 
+            if(payload.ContainsKey("startTimeResult") && payload.ContainsKey("endTimeResult"))
+            {
+                // int startTimeResult = int.Parse(payload["startTimeResult"]);
+            }
 
             if (!payload.ContainsKey("caloriesBurnedResult"))
             {
@@ -112,24 +117,24 @@ namespace WorkoutApplicationServices.Commands
                 }
             }
 
-            if (!payload.ContainsKey("caloriesGoalResult"))
+            if (!payload.ContainsKey("caloriesBurnedGoalResult"))
             {
-                Errors["caloriesGoalResult"].Add("Enter Your Total Calories Burned");
+                Errors["caloriesBurnedGoalResult"].Add("Enter Your Total Calories Burned");
             }
             else
             {
                 try
                 {
-                    int caloriesGoalResult = int.Parse(payload["caloriesGoalResult"].ToString());
+                    int caloriesBurnedGoalResult = int.Parse(payload["caloriesBurnedGoalResult"].ToString());
 
-                    if (caloriesGoalResult <= 0)
+                    if (caloriesBurnedGoalResult <= 0)
                     {
-                        Errors["caloriesGoalResult"].Add("Oi, wrong input ka, nag - exercise ka ba?");
+                        Errors["caloriesBurnedGoalResult"].Add("Oi, wrong input ka, nag - exercise ka ba?");
                     }
                 }
                 catch (FormatException f)
                 {
-                    Errors["caloriesGoalResult"].Add("Oi, number ilagay mo boi, halatang pagkain na naman iniisip mo");
+                    Errors["caloriesBurnedGoalResult"].Add("Oi, number ilagay mo boi, halatang pagkain na naman iniisip mo");
                 }
             }
         }

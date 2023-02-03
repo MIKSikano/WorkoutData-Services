@@ -17,7 +17,6 @@ public class WorkoutDataController : ControllerBase
     }
 
     [HttpGet("")]
-
     public IActionResult Index()
     {
         Dictionary<string, object> data = new Dictionary<string, object>();
