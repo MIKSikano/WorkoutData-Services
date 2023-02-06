@@ -68,7 +68,7 @@ namespace WorkoutApplicationServices.Commands
 
         public void Tapusin()
         {
-            int id = int.Parse(payload["id"].ToString());
+            // int id = int.Parse(payload["id"].ToString());
 
             if (!payload.ContainsKey("exerciseType"))
             {

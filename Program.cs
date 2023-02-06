@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using WorkoutApplicationServices.Interfaces;
 using WorkoutApplicationServices.Services;
+using WorkoutApplicationServices.Data;
+
 
 namespace WorkoutApplicationServices
 {
@@ -13,11 +16,17 @@ namespace WorkoutApplicationServices
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<DataContext>(options => {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MSSqlConnection"));
+            });
+            //configuration of data context
+            //put parameters
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddScoped<IWorkoutDataService, WorkoutDataApplicationContextService>();
+            builder.Services.AddScoped<IWorkoutDataService, WorkoutDataMSSQLService>();
 
             WebApplication app = builder.Build();
 

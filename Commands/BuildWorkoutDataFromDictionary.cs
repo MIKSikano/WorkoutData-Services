@@ -17,7 +17,10 @@ public class BuildWorkoutDataFromDictionary
     {
         ExerciseData exerciseData = new ExerciseData();
 
-        exerciseData.Id = (int)this.data["id"];
+        if (this.data.ContainsKey("id"))
+        {
+            exerciseData.Id = (int)this.data["id"];
+        }
         exerciseData.exerciseType = (string)this.data["exerciseType"];
         exerciseData.date = (string)this.data["date"];
         exerciseData.startTimeResult = (string)this.data["startTimeResult"];
@@ -30,9 +33,12 @@ public class BuildWorkoutDataFromDictionary
 
     public void CleanUp()
     {
-        if (this.data["id"] is JsonElement)
+        if (this.data.ContainsKey("id"))
         {
-            this.data["id"] = int.Parse(((JsonElement)this.data["id"]).ToString());
+            if (this.data["id"] is JsonElement)
+            {
+                this.data["id"] = int.Parse(((JsonElement)this.data["id"]).ToString());
+            }
         }
 
         if (this.data["exerciseType"] is JsonElement)

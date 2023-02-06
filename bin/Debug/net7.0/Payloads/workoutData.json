@@ -1,9 +1,8 @@
 {
-    "id": 3,
     "exerciseType": "Treadmill",
     "date": "2023-01-19",
     "startTimeResult": "15:00",
     "endTimeResult": "16:00",
-    "caloriesBurnedResult": 243,
+    "caloriesBurnedResult": 232,
     "caloriesBurnedGoalResult": 432
 }
