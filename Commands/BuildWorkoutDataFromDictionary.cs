@@ -21,12 +21,12 @@ public class BuildWorkoutDataFromDictionary
         {
             exerciseData.Id = (int)this.data["id"];
         }
-        exerciseData.exerciseType = (string)this.data["exerciseType"];
         exerciseData.date = (string)this.data["date"];
         exerciseData.startTimeResult = (string)this.data["startTimeResult"];
         exerciseData.endTimeResult = (string)this.data["endTimeResult"];
         exerciseData.caloriesBurnedResult = (int)this.data["caloriesBurnedResult"];
         exerciseData.caloriesGoalResult = (int)this.data["caloriesBurnedGoalResult"];
+        exerciseData.ExerciseTypeId = int.Parse(this.data["ExerciseTypeId"].ToString());
 
         return exerciseData;
     }
@@ -41,15 +41,15 @@ public class BuildWorkoutDataFromDictionary
             }
         }
 
-        if (this.data["exerciseType"] is JsonElement)
-        {
-            this.data["exerciseType"] = ((JsonElement)this.data["exerciseType"]).ToString();
-        }
+        // if (this.data["exerciseType"] is JsonElement)
+        // {
+        //     this.data["exerciseType"] = ((JsonElement)this.data["exerciseType"]).ToString();
+        // }
 
         if (this.data["date"] is JsonElement)
         {
             this.data["date"] = ((JsonElement)this.data["date"]).ToString();
-        }
+        }   
 
         if (this.data["startTimeResult"] is JsonElement)
         {

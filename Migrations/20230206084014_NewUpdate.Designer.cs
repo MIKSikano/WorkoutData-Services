@@ -11,8 +11,8 @@ using WorkoutApplicationServices.Data;
 namespace workoutapplicationservices.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230206024617_AddedWorkoutDatas")]
-    partial class AddedWorkoutDatas
+    [Migration("20230206084014_NewUpdate")]
+    partial class NewUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace workoutapplicationservices.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ExerciseTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("caloriesBurnedResult")
                         .HasColumnType("int");
 
@@ -46,17 +49,48 @@ namespace workoutapplicationservices.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("exerciseType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("startTimeResult")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExerciseTypeId");
+
                     b.ToTable("ExerciseDatas");
+                });
+
+            modelBuilder.Entity("WorkoutApplicationServices.Models.ExerciseType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ExerciseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExerciseTypes");
+                });
+
+            modelBuilder.Entity("WorkoutApplicationServices.Models.ExerciseData", b =>
+                {
+                    b.HasOne("WorkoutApplicationServices.Models.ExerciseType", "ExerciseType")
+                        .WithMany("ExerciseDatas")
+                        .HasForeignKey("ExerciseTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExerciseType");
+                });
+
+            modelBuilder.Entity("WorkoutApplicationServices.Models.ExerciseType", b =>
+                {
+                    b.Navigation("ExerciseDatas");
                 });
 #pragma warning restore 612, 618
         }

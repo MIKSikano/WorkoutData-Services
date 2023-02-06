@@ -17,7 +17,9 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
     }
     public void Delete(int Id)
     {
-        throw new NotImplementedException();
+        ExerciseData exercise = _dataContext.ExerciseDatas.SingleOrDefault(o => o.Id == Id);
+        _dataContext.ExerciseDatas.Remove(exercise);
+        
     }
 
     public List<ExerciseData> GetAll()
@@ -40,7 +42,7 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
             _dataContext.ExerciseDatas.Add(hash);
         } else {
             ExerciseData temp = this.GetById(hash.Id);
-            temp.exerciseType = hash.exerciseType;
+            // temp.exerciseType = hash.exerciseType;
             temp.date = hash.date;
             temp.startTimeResult = hash.startTimeResult;
             temp.endTimeResult = hash.endTimeResult;

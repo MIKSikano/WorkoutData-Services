@@ -70,10 +70,10 @@ namespace WorkoutApplicationServices.Commands
         {
             // int id = int.Parse(payload["id"].ToString());
 
-            if (!payload.ContainsKey("exerciseType"))
-            {
-                Errors["exerciseType"].Add("Enter your type of Exercise");
-            }
+            // if (!payload.ContainsKey("exerciseType"))
+            // {
+            //     Errors["exerciseType"].Add("Enter your type of Exercise");
+            // }
 
             if (!payload.ContainsKey("date"))
             {
