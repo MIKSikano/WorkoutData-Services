@@ -25,14 +25,16 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
         
     }
 
+    //para makita yung exerciseType dun kay workoutData
     public List<ExerciseData> GetAll()
     {
-        List<ExerciseData> exerciseData = _dataContext.ExerciseDatas.ToList<ExerciseData>();
-        foreach (ExerciseData item in exerciseData)
-        {
-            item.ExerciseType = _exerciseTypeService.GetById(item.ExerciseTypeId);
-        } 
-        return exerciseData;
+        // List<ExerciseData> exerciseData = _dataContext.ExerciseDatas.ToList<ExerciseData>();
+        // foreach (ExerciseData item in exerciseData)
+        // {
+        //     item.ExerciseType = _exerciseTypeService.GetById(item.ExerciseTypeId);
+        // } 
+        // return exerciseData;
+         return _dataContext.ExerciseDatas.ToList<ExerciseData>();
     }
 
     public ExerciseData GetById(int Id)

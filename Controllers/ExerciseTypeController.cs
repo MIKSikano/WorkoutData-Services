@@ -12,7 +12,7 @@ public class ExerciseTypeController : ControllerBase
 {
     private readonly IExerciseTypeService _exerciseTypeService;
 
-     public ExerciseTypeController(IExerciseTypeService exerciseTypeService)
+    public ExerciseTypeController(IExerciseTypeService exerciseTypeService)
     {
         _exerciseTypeService = exerciseTypeService;
     }

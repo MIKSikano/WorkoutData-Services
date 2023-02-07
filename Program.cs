@@ -15,6 +15,15 @@ namespace WorkoutApplicationServices
 
             // Add services to the container.
 
+            var corConfigName = "CORS-Config";
+            builder.Services.AddCors(options => {
+                options.AddPolicy(name: corConfigName, policy => {
+                    policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+
+                });
+            });
+
+        
             builder.Services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -43,6 +52,7 @@ namespace WorkoutApplicationServices
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors(corConfigName);
 
             app.UseHttpsRedirection();
 
