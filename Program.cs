@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WorkoutApplicationServices.Interfaces;
 using WorkoutApplicationServices.Services;
 using WorkoutApplicationServices.Data;
-
+using System.Text.Json.Serialization;
 
 namespace WorkoutApplicationServices
 {
@@ -15,8 +15,14 @@ namespace WorkoutApplicationServices
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
-            builder.Services.AddDbContext<DataContext>(options => {
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.WriteIndented = true;
+            });
+
+            builder.Services.AddDbContext<DataContext>(options =>
+            {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MSSqlConnection"));
             });
             //configuration of data context
@@ -27,6 +33,7 @@ namespace WorkoutApplicationServices
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IWorkoutDataService, WorkoutDataMSSQLService>();
+            builder.Services.AddScoped<IExerciseTypeService, ExerciseTypeMSSQLService>();
 
             WebApplication app = builder.Build();
 

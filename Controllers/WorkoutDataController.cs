@@ -52,7 +52,7 @@ public class WorkoutDataController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult Show(int id)
     {
-        ExerciseData exerciseData = _workoutDataService.GetById(id);
+        ExerciseData  exerciseData = _workoutDataService.GetById(id);
         return Ok(exerciseData);
     }
 

@@ -10,27 +10,36 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
 {
 
     private readonly DataContext _dataContext;
+    private readonly IExerciseTypeService _exerciseTypeService;
     //inject yung data context
-    public WorkoutDataMSSQLService(DataContext dataContext)
+    public WorkoutDataMSSQLService(DataContext dataContext, IExerciseTypeService exerciseTypeService)
     {
         _dataContext = dataContext;
+        _exerciseTypeService = exerciseTypeService;
     }
     public void Delete(int Id)
     {
         ExerciseData exercise = _dataContext.ExerciseDatas.SingleOrDefault(o => o.Id == Id);
         _dataContext.ExerciseDatas.Remove(exercise);
+        _dataContext.SaveChanges();
         
     }
 
     public List<ExerciseData> GetAll()
     {
-        return _dataContext.ExerciseDatas.ToList<ExerciseData>();
+        List<ExerciseData> exerciseData = _dataContext.ExerciseDatas.ToList<ExerciseData>();
+        foreach (ExerciseData item in exerciseData)
+        {
+            item.ExerciseType = _exerciseTypeService.GetById(item.ExerciseTypeId);
+        } 
+        return exerciseData;
     }
 
     public ExerciseData GetById(int Id)
     {
         return _dataContext.ExerciseDatas.SingleOrDefault(o => o.Id == Id);
     }
+
 
     //this includes update
     public void Save(ExerciseData hash)
@@ -51,4 +60,6 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
         }
         _dataContext.SaveChanges();
     }
+
+    
 }

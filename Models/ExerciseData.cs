@@ -10,8 +10,8 @@ public class ExerciseData
     public int caloriesGoalResult {get; set;}
     public int ExerciseTypeId {get; set;}
     public ExerciseType ExerciseType {get; set;}
-    // public ExerciseData()
-    // {
+    public ExerciseData()
+    {
         
-    // }
+    }
 }
