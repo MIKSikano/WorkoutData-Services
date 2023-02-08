@@ -58,7 +58,7 @@ public class WorkoutDataMSSQLService : IWorkoutDataService
             temp.startTimeResult = hash.startTimeResult;
             temp.endTimeResult = hash.endTimeResult;
             temp.caloriesBurnedResult = hash.caloriesBurnedResult;
-            temp.caloriesGoalResult = hash.caloriesGoalResult;
+            temp.caloriesBurnedGoalResult = hash.caloriesBurnedGoalResult;
         }
         _dataContext.SaveChanges();
     }

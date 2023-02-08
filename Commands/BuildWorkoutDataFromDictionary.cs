@@ -25,7 +25,7 @@ public class BuildWorkoutDataFromDictionary
         exerciseData.startTimeResult = (string)this.data["startTimeResult"];
         exerciseData.endTimeResult = (string)this.data["endTimeResult"];
         exerciseData.caloriesBurnedResult = (int)this.data["caloriesBurnedResult"];
-        exerciseData.caloriesGoalResult = (int)this.data["caloriesBurnedGoalResult"];
+        exerciseData.caloriesBurnedGoalResult = (int)this.data["caloriesBurnedGoalResult"];
         exerciseData.ExerciseTypeId = int.Parse(this.data["ExerciseTypeId"].ToString());
 
         return exerciseData;

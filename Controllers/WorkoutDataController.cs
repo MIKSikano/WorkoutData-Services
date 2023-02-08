@@ -19,9 +19,8 @@ public class WorkoutDataController : ControllerBase
     [HttpGet("")]
     public IActionResult Index()
     {
-        Dictionary<string, object> data = new Dictionary<string, object>();
-        data.Add("workout_data", _workoutDataService.GetAll());
-        return Ok(data);
+        List<ExerciseData> exerciseData = _workoutDataService.GetAll();
+        return Ok(exerciseData);
     }
 
     [HttpPost("")]
@@ -52,7 +51,7 @@ public class WorkoutDataController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult Show(int id)
     {
-        ExerciseData  exerciseData = _workoutDataService.GetById(id);
+        ExerciseData exerciseData = _workoutDataService.GetById(id);
         return Ok(exerciseData);
     }
 
