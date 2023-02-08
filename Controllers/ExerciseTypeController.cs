@@ -20,9 +20,8 @@ public class ExerciseTypeController : ControllerBase
     [HttpGet("")]
     public IActionResult Index()
     {
-        Dictionary<string, object> data = new Dictionary<string, object>();
-        data.Add("workout_data", _exerciseTypeService.GetAll());
-        return Ok(data);
+        List<ExerciseType> exerciseType = _exerciseTypeService.GetAll();
+        return Ok(exerciseType);
     }
 
     [HttpPost("")]
